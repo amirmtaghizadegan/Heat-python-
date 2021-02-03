@@ -14,6 +14,7 @@ U = 2.5
 Cp = 4200
 K = 10
 Lambda = dx * K / Ro / U / Cp / dr
+# Boundry values
 t = np.zeros((len(x), len(r)))
 t[0, :] = 800
 t[:, -1] = 20
@@ -30,6 +31,7 @@ for i in range(int(xlast / dx) + 1)[:-1]:
                     (t[i, k + 1] - t[i, k]) / r[k] +
                     (t[i, k + 1] - 2 * t[i, k] + t[i, k - 1]) / dr) + t[i, k]
         eq_counter += 1
+    # Boundry Equations
     A[eq_counter, 1] = 1
     B[eq_counter] = t[i, 2]
     eq_counter += 1
